@@ -5,11 +5,21 @@ F.store = ""
 F.brokenCases = 0
 
 function F.Notify(message, title, type)
-    lib.notify({
-        title = title or '',
-        description = message,
-        type = type or 'inform'
-    })
+    if Config.NotifType == "mgh" then
+        exports['mgh_notification']:SendNotification({
+            type = type, -- success/error/info/warning
+            title = 'MGH Vangelico',
+            message = message,
+            duration = 5000, -- Optionnel (ms)
+            position = 'right-center' -- Optionnel
+        })
+    elseif Config.NotifType == "ox_lib" then
+        lib.notify({
+            title = title or '',
+            description = message,
+            type = type or 'inform'
+        })
+    end
 end
 
 function F.CreateBlip(coords, sprite, color, scale, label)
@@ -28,12 +38,12 @@ end
 function F.PlayCaseAnimation(ped, x, y, z, heading)
     local animDict = "missheist_jewel"
     local animName = "smash_case"
-    
+
     RequestAnimDict(animDict)
     while not HasAnimDictLoaded(animDict) do
         Wait(1)
     end
-    
+
     SetEntityCoords(ped, x, y, z - 0.5)
     SetEntityHeading(ped, heading)
     TaskPlayAnim(ped, animDict, animName, 8.0, 1.0, -1, 2, 0, false, false, false)
@@ -44,7 +54,7 @@ function F.PlayCaseEffects(x, y, z)
     while not HasNamedPtfxAssetLoaded("scr_jewelheist") do
         Wait(1)
     end
-    
+
     UseParticleFxAssetNextCall("scr_jewelheist")
     StartParticleFxLoopedAtCoord("scr_jewel_cab_smash", x, y, z, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
 end

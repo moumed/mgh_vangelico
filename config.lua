@@ -8,6 +8,8 @@ Config = {
 	UseBlips = true, -- If true, blips will be shown on the map
 
 	MaxWindows = 20, -- Maximum amount of windows that can be broken
+
+	NotifType = "ox_lib", -- ox_lib / mgh
 	
 	-- Robbery timing settings
 	CaseBreakingTime = 5000, -- Time in milliseconds to break each display case (5 seconds)
