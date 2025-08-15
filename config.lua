@@ -66,7 +66,7 @@ Config = {
 		RequiredCops = 1 -- How many cops are required to rob the store
 	},
 
-	Dispatch = 'qs-dispatch', -- Supported dispatches: qs-dispatch, cd_dispatch, core_dispatch
+	Dispatch = 'tk_dispatch', -- Supported dispatches: qs-dispatch, cd_dispatch, core_dispatch, tk_dispatch
 
 	SecBetwNextRob = 3600, -- How many seconds between each robbery (1 hour)
 	
