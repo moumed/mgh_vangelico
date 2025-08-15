@@ -12,12 +12,12 @@ client_scripts {
 
 server_scripts {
 	'server/*.lua',
-	--[[server.lua]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'server/utils/.vite.config.js',
+	'server/utils/.vite.config.js',
 }
 
 shared_scripts {
 	'@es_extended/imports.lua',
-	'@es_extended/locale.lua', 
+	'@es_extended/locale.lua',
 	'@ox_lib/init.lua',
 	'locales/*.lua',
 	'shared/*.lua',
@@ -35,7 +35,9 @@ escrow_ignore {
 	'server/dispatch.lua',
 	'shared/locations.lua',
 	'config.lua',
-	'fxmanifest.lua'
+	'SETUP/ox_inventory_items',
+	'fxmanifest.lua',
+
 }
 
 lua54 'yes'
