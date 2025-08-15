@@ -13,7 +13,7 @@ Config = {
 	
 	-- Robbery timing settings
 	CaseBreakingTime = 5000, -- Time in milliseconds to break each display case (5 seconds)
-	AlarmDuration = 300000, -- Time in milliseconds for alarm to play (5 minutes)
+	AlarmDuration = 30000, -- Time in milliseconds for alarm to play (5 minutes)
 	MaxRobberyTime = 600000, -- Maximum time for the entire robbery in milliseconds (10 minutes)
 
 	-- Configurable loot items

@@ -50,13 +50,12 @@ function Dispatch.SendDispatchAlert(coords, storeName)
                 flash = true
             },
             jobs = Config.Police.Jobs,
-            gender = IsPedMale(GetPlayerPed(source)) and 'Male' or 'Female',
             removeTime = 120000,
             flash = true,
             playSound = true,
             color = '#FF0000',
-
         }
+        exports.tk_dispatch:addCall(data)
     elseif dispatchType == 'core_dispatch' then
         exports['core_dispatch']:addCall("10-90", _U('shop_robbery'), {
             { icon = "fa-gem", info = storeName }
